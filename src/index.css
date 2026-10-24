@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400&family=Manrope:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-void: #0a0b0d;
+  --color-neon: #d9bd8f;   /* brass */
+  --color-hot: #b08d5b;    /* bronze */
+  --color-ice: #efe8da;    /* pearl */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --animate-slide: slide 40s linear infinite;
+  --animate-slide-rev: slide-rev 46s linear infinite;
+  @keyframes slide { to { transform: translateX(-50%); } }
+  @keyframes slide-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { @apply bg-void font-body text-white/70 overflow-x-hidden text-[1.05rem] leading-relaxed; }
+h1, h2, h3 { font-family: var(--font-display); color: #f4efe6; font-weight: 400; letter-spacing: -0.02em; }
+.font-display { font-weight: 400; letter-spacing: -0.02em; }
+:focus-visible { outline: 2px solid var(--color-neon); outline-offset: 3px; }
+
+.glass { border: 1px solid rgb(255 255 255 / 0.08); background: rgb(255 255 255 / 0.025); backdrop-filter: blur(16px); }
+.outline-text { -webkit-text-stroke: 1px rgb(239 232 218 / 0.3); color: transparent; }
+
+/* Replace the old neon glows and white-on-gold text everywhere */
+[class*="shadow-["] { box-shadow: 0 24px 60px -24px rgb(0 0 0 / 0.8) !important; }
+[class*="from-neon"]:not([class*="bg-clip-text"]) { color: var(--color-void) !important; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
